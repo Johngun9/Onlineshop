@@ -23,26 +23,21 @@ $(function() {
 	// solving the active menu problem
 	switch (menu) {
 
-	case 'About Us':
+	case 'about':
 		$('#about').addClass('active');
 		break;
-	case 'Contact Us':
+	case 'contact':
 		$('#contact').addClass('active');
 		break;
-	case 'All Products':
-		$('#listProducts').addClass('active');
+	case 'productlist':
+		$('#productlist').addClass('active');
 		break;
-	case 'Product Management':
-		$('#manageProduct').addClass('active');
-		break;
-	case 'Shopping Cart':
-		$('#userModel').addClass('active');
-		break;		
 	default:
-		if (menu == "Home")
-			break;
-		$('#listProducts').addClass('active');
-		$('#a_' + menu).addClass('active');
+//		if (menu == "Home")
+//			break;
+//		$('#listProducts').addClass('active');
+//		$('#a_' + menu).addClass('active');
+		$('#home').addClass('active');
 		break;
 	}
 
