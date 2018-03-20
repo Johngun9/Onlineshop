@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>net.johngun</groupId>
-	<artifactId>online-shopbackend</artifactId>
+	<artifactId>onlineshopbackend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
