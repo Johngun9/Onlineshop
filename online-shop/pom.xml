@@ -12,8 +12,14 @@
 		<javaee.version>7.0</javaee.version>
 		<spring.version>4.3.6.RELEASE</spring.version>
 	</properties>
-	
+
 	<dependencies>
+		<!-- Linking Backend project to frontend -->
+		<dependency>
+			<groupId>net.johngun</groupId>
+			<artifactId>onlineshopbackend</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<!-- JAVA EE API -->
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
