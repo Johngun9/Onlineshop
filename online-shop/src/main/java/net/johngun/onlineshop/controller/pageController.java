@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.johngun.online_shopbackend.DAO.CategoryDAO;
+import net.johngun.online_shopbackend.dto.Category;
 
 @Controller
 public class pageController {
@@ -54,33 +55,38 @@ public class pageController {
 		return mv;
 	}
 	
-//	@RequestMapping(value="/show/all/products")
-//	public ModelAndView showallproducts()
-//	{
-//		ModelAndView mv=new ModelAndView("page");
-//		mv.addObject("title","all products");
-//		 //passig the list of categories
-//		
-//		mv.addObject("categories","categoryDAO.list()");
-//		mv.addObject("userClickAllProducts",true);		
-//		return mv;
-//	}
-//	
-//	@RequestMapping(value="/show/category/{id}/products")
-//	public ModelAndView showcategoryproducts(@PathVariable("id") int id)
-//	{
-//		ModelAndView mv=new ModelAndView("page");
-//		
-//		// getting the single category from categoryDAO
-//		mv.addObject("category","categoryDAO.get(id)");
-//		
-//		mv.addObject("title","all products");
-//		
-//		 //passig the list of categories		
-//		mv.addObject("categories","categoryDAO.list()");
-//		mv.addObject("userClickAllProducts",true);		
-//		return mv;
-//	}
+	@RequestMapping(value="/show/all/products")
+	public ModelAndView showallproducts()
+	{
+		ModelAndView mv=new ModelAndView("page");
+		mv.addObject("title","all products");
+		
+		 //passig the list of categories		
+		mv.addObject("categories",categoryDAO.list());
+		mv.addObject("userClickAllProducts",true);		
+		return mv;
+	}
+	
+	@RequestMapping(value="/show/category/{id}/products")
+	public ModelAndView showcategoryproducts(@PathVariable("id") int id)
+	{
+		ModelAndView mv=new ModelAndView("page");
+		
+		// getting the single category from categoryDAO
+		Category category=null;
+		category=categoryDAO.get(id);
+				
+		mv.addObject("title",category.getName());
+		
+		 //passig the list of categories		
+		mv.addObject("categories",categoryDAO.list());
+		
+		//passing single category
+		mv.addObject("category",category);
+		
+		mv.addObject("userClickCategoryProducts",true);		
+		return mv;
+	}
 	
 	
 	
