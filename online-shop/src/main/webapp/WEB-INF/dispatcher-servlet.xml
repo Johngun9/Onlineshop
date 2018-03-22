@@ -16,7 +16,7 @@
    
    ">   
    <context:component-scan base-package="net.johngun.onlineshop.controller"/>
-   <context:component-scan base-package="net.johngun.online_shopbackend.DAOImpl"/>
+   <context:component-scan base-package="net.johngun.online_shopbackend"/>
    
    <bean id="viewResolver"
    		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
