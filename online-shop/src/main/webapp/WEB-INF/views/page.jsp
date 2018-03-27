@@ -72,6 +72,11 @@ window.contextRoot = '${contextRoot}'
 			<c:if test="${userClickAllProducts==true or userClickCategoryProducts==true}">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
+			
+			<!-- Page Content clicks userClickShowProduct page -->
+			<c:if test="${userClickShowProduct==true}">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
 			<!-- /.container -->
 		</div>
 		
@@ -80,14 +85,14 @@ window.contextRoot = '${contextRoot}'
 
 		<!-- Bootstrap core JavaScript -->
 		
-		<script src="${vendor}/jquery/jquery.min.js"></script>
+		<!--  --><script src="${vendor}/jquery/jquery.min.js"></script>
 		<script src="${vendor}/bootstrap/js/bootstrap.bundle.min.js"></script>
 		
 		<!-- Datatable plugin -->
 		<script src="${js}/jquery.dataTables.js"></script>
 		
-		<!-- Datatable Bootstrap Script 
-		<script src="${js}/dataTables.bootstrap.js"></script>-->
+		<!-- Datatable Bootstrap Script -->
+		<script src="${js}/dataTables.bootstrap.js"></script>
 				
 		<!-- My own coded jquery -->
 		<script src="${js}/myapp.js"></script>

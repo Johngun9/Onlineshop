@@ -37,24 +37,24 @@
 					<table id="productListTable" class="table table-striped table-borderd">
 					<thead>
 						<tr>
+						<th>Item</th>
 						<th>Name</th>
 						<th>Brand</th>
 						<th>UnitPrice</th>
 						<th>Qty. Available</th>
-						<th></th>
 						<th></th>
 						</tr>
 					</thead>
-					
-					<tfooter>
+				<tfoot>
 						<tr>
+						<th>Item</th>
 						<th>Name</th>
 						<th>Brand</th>
 						<th>UnitPrice</th>
 						<th>Qty. Available</th>
 						<th></th>
 						</tr>
-					</tfooter>
+					</tfoot>
 					</table>
 				</div>
 			</div>

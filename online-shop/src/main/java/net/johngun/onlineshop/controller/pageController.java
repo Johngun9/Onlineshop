@@ -7,13 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.johngun.online_shopbackend.DAO.CategoryDAO;
+import net.johngun.online_shopbackend.DAO.ProductDAO;
 import net.johngun.online_shopbackend.dto.Category;
+import net.johngun.online_shopbackend.dto.Product;
 
 @Controller
 public class pageController {
 	
 	@Autowired
 	public CategoryDAO categoryDAO;
+	
+	@Autowired
+	public ProductDAO productDAO;
 	
 	@RequestMapping(value="/home")
 	public ModelAndView home()
@@ -88,7 +93,23 @@ public class pageController {
 		return mv;
 	}
 	
-	
+	@RequestMapping(value="/show/{id}/product")
+	public ModelAndView showSingleProduct(@PathVariable int id)
+	{
+		ModelAndView mv=new ModelAndView("page");
+		Product product =productDAO.get(id);
+		
+		//update the view count
+		product.setViews(product.getViews()+1);
+		productDAO.update(product);
+		 
+		mv.addObject("title",product.getName());
+		
+		//passig the list of categories
+		mv.addObject("product",product);
+		mv.addObject("userClickShowProduct",true);		
+		return mv;
+	}
 	
 	
 //	@RequestMapping(value={"/","/test","/productlist","/contact","/about","/home"})

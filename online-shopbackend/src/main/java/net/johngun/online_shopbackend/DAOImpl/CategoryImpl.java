@@ -3,7 +3,7 @@ package net.johngun.online_shopbackend.DAOImpl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,20 +17,6 @@ public class CategoryImpl implements CategoryDAO {
 	
 	@Autowired
 	SessionFactory sessionFactory;
-
-	
-	@Override
-	public List<Category> list() {
-		
-		String selectActiveCategory= "FROM Category WHERE active=:active";
-		
-		Query query=sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
-		
-		query.setParameter("active", true);
-
-		return query.getResultList();
-	}
-	
 	
 	 //Getting the Single Categroy 
 	@Override
@@ -85,6 +71,14 @@ public class CategoryImpl implements CategoryDAO {
 			ex.printStackTrace();
 			return false;
 		}
+	}
+
+	@Override
+	public List<Category> list() {
+		
+		return sessionFactory.getCurrentSession()
+								.createQuery("FROM Category WHERE active=:active",Category.class)
+									.setParameter("active", true).getResultList();
 	}
 
 }
