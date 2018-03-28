@@ -73,7 +73,7 @@ window.contextRoot = '${contextRoot}'
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 			
-			<!-- Page Content clicks userClickShowProduct page -->
+			<!-- Page Content clicks show product page -->
 			<c:if test="${userClickShowProduct==true}">
 				<%@include file="singleProduct.jsp"%>
 			</c:if>

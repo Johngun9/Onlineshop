@@ -68,7 +68,7 @@ $(function(){
 					},
 							{data:'name'},
 							{data:'brand'},
-							{data:'unitprice',
+							{data:'untiprice',
 								mRender:function(data, type, row){
 									return '&#8377; '+data
 								}

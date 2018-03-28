@@ -15,7 +15,7 @@
    http://www.springframework.org/schema/mvc/spring-mvc.xsd
    
    ">   
-   <context:component-scan base-package="net.johngun.onlineshop.controller"/>
+   <context:component-scan base-package="net.johngun.onlineshop"/>
    <context:component-scan base-package="net.johngun.online_shopbackend"/>
    
    <bean id="viewResolver"
