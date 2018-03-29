@@ -29,6 +29,7 @@ public class pageController {
 	public ModelAndView home()
 	{
 		ModelAndView mv=new ModelAndView("page");
+		
 		mv.addObject("title","home");
 		
 		logger.info("Inside PageController index method - INFO");
@@ -72,7 +73,7 @@ public class pageController {
 	public ModelAndView showallproducts()
 	{
 		ModelAndView mv=new ModelAndView("page");
-		mv.addObject("title","all products");
+		mv.addObject("title","allproducts");
 		
 		 //passig the list of categories		
 		mv.addObject("categories",categoryDAO.list());

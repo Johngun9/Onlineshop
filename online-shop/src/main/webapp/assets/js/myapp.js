@@ -5,12 +5,13 @@ $(function(){
 	{
 	case 'about':
 		$('#about').addClass('active');
+		
 		break;
 	case 'contact':
 		$('#contact').addClass('active');
 		break;
-	case 'all products':
-		$('#listProducts').addClass('active');
+	case 'allproducts':
+		$('#allProducts').addClass('active');
 		break;
 	case 'Product Management':
 		$('#manageProduct').addClass('active');
@@ -19,7 +20,8 @@ $(function(){
 		$('#userModel').addClass('active');
 		break;		
 	default:
-		if (menu == "Home")
+		if (menu == "home")
+			$('#home').addClass('active');	
 			break;
 		$('#listProducts').addClass('active');
 		$('#a_' + menu).addClass('active');
