@@ -13,8 +13,8 @@ $(function(){
 	case 'allproducts':
 		$('#allProducts').addClass('active');
 		break;
-	case 'Product Management':
-		$('#manageProduct').addClass('active');
+	case 'ManagementProduct':
+		$('#manageProducts').addClass('active');
 		break;
 	case 'Shopping Cart':
 		$('#userModel').addClass('active');
@@ -74,7 +74,8 @@ $(function(){
 							{data:'brand'},
 							{data:'untiprice',
 								mRender:function(data, type, row){
-									return '&#8377; '+data
+//									return '&#8377; '+data
+									return '<i class="fas fa-rupee-sign"></i>' +data
 								}
 							},
 							{data:'quantity',

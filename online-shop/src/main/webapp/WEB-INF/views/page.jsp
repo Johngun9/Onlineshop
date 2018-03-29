@@ -7,6 +7,7 @@
 <spring:url var="vendor" value="/resources/vendor" />
 <spring:url var="js" value="/resources/js" />
 <spring:url var="images" value="/resources/images" />
+<spring:url var="i" value="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -34,8 +35,8 @@ window.contextRoot = '${contextRoot}'
 <!-- Bootstrap readable theme CSS -->
 <link href="${css}/bootstrap-letara.theme.css" rel="stylesheet">
 
-<!-- Bootstrap DataTable theme CSS
-<link href="${css}/dataTables.bootstrap.css" rel="stylesheet"> -->
+<!-- Bootstrap DataTable theme CSS-->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet"> 
 <!-- Custom styles for this template -->
 
 <link href="${css}/shop-homepage.css" rel="stylesheet">
@@ -77,6 +78,11 @@ window.contextRoot = '${contextRoot}'
 			<c:if test="${userClickShowProduct==true}">
 				<%@include file="singleProduct.jsp"%>
 			</c:if>
+			
+			<!-- Page Content clicks show Manage products page -->
+			<c:if test="${userClickManageProduct==true}">
+				<%@include file="manageProducts.jsp"%>
+			</c:if>
 			<!-- /.container -->
 		</div>
 		
@@ -91,8 +97,8 @@ window.contextRoot = '${contextRoot}'
 		<!-- Datatable plugin -->
 		<script src="${js}/jquery.dataTables.js"></script>
 		
-		<!-- Datatable Bootstrap Script
-		<script src="${js}/dataTables.bootstrap.js"></script> -->
+		<!-- Datatable Bootstrap Script -->
+		<script src="${js}/dataTables.bootstrap.js"></script>
 				
 		<!-- My own coded jquery -->
 		<script src="${js}/myapp.js"></script>
