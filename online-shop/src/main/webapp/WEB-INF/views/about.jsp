@@ -7,6 +7,6 @@
 <title>About page</title>
 </head>
 <body>
-<h1>This is About Page</h1>
+<h1>This is About Chrome Page</h1>
 </body>
 </html>

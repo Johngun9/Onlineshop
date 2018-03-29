@@ -95,6 +95,8 @@ public class pageController {
 		 //passig the list of categories		
 		mv.addObject("categories",categoryDAO.list());
 		
+//		mv.addObject("products",productDAO.listActiveProductsByCategory(id));
+		
 		//passing single category
 		mv.addObject("category",category);
 		

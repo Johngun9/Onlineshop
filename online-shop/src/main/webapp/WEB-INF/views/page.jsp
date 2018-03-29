@@ -34,8 +34,8 @@ window.contextRoot = '${contextRoot}'
 <!-- Bootstrap readable theme CSS -->
 <link href="${css}/bootstrap-letara.theme.css" rel="stylesheet">
 
-<!-- Bootstrap DataTable theme CSS -->
-<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
+<!-- Bootstrap DataTable theme CSS
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet"> -->
 <!-- Custom styles for this template -->
 
 <link href="${css}/shop-homepage.css" rel="stylesheet">
@@ -91,8 +91,8 @@ window.contextRoot = '${contextRoot}'
 		<!-- Datatable plugin -->
 		<script src="${js}/jquery.dataTables.js"></script>
 		
-		<!-- Datatable Bootstrap Script -->
-		<script src="${js}/dataTables.bootstrap.js"></script>
+		<!-- Datatable Bootstrap Script
+		<script src="${js}/dataTables.bootstrap.js"></script> -->
 				
 		<!-- My own coded jquery -->
 		<script src="${js}/myapp.js"></script>
