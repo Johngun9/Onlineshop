@@ -13,7 +13,7 @@ $(function(){
 	case 'allproducts':
 		$('#allProducts').addClass('active');
 		break;
-	case 'ManagementProduct':
+	case 'manageproducts':
 		$('#manageProducts').addClass('active');
 		break;
 	case 'Shopping Cart':

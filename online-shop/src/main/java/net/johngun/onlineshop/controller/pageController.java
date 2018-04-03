@@ -73,7 +73,7 @@ public class pageController {
 	public ModelAndView showallproducts()
 	{
 		ModelAndView mv=new ModelAndView("page");
-		mv.addObject("title","allproducts");
+		mv.addObject("title","Allproducts");
 		
 		 //passig the list of categories		
 		mv.addObject("categories",categoryDAO.list());

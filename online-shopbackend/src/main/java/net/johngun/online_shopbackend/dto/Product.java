@@ -35,7 +35,7 @@ public class Product {
 	private int purchases;
 	private int views;
 	
-	private Product()
+	public Product()
 	{
 		this.code="PRD"+UUID.randomUUID().toString().substring(26).toUpperCase();
 	}

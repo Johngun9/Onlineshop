@@ -26,6 +26,8 @@
    
    <!-- Loading Static Resources -->
    
+  
+   
    <mvc:annotation-driven/>
    
    <mvc:resources location="/assets/" mapping="/resources/**"/>
