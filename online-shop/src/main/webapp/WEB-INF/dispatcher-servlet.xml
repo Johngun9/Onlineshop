@@ -26,8 +26,7 @@
    
    <!-- Loading Static Resources -->
    
-  
-   
+ <!--  <mvc:default-servlet-handler/>-->    
    <mvc:annotation-driven/>
    
    <mvc:resources location="/assets/" mapping="/resources/**"/>

@@ -1,9 +1,24 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <div class="container">
 
 	<div class="row">
+	
+	<c:if test="${not empty message}">
+		
+		<div class="col-xs-12 col-md-12">
+			
+			<div class="alert alert-success alert-dismissible">
+				
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				
+				${message}
+				
+			</div>
+		</div>
+	</c:if>
 
-		<div class="col-md-offset-2 col-md-8">
+		<div class="col-md-offset-4 col-md-8">
 		
 			<div class="panel panel-primary">
 			
@@ -27,7 +42,7 @@
 							
 							<div class="col-md-8">
 								<sf:input type="text" path="name" id="name" placeholder="Product Name" class="form-control"/>
-								
+								<sf:errors path="name" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						
@@ -37,7 +52,7 @@
 							
 							<div class="col-md-8">
 								<sf:input type="text" path="brand" id="brand" placeholder="Product Name" class="form-control"/>
-								
+								<sf:errors path="brand" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						
@@ -46,8 +61,8 @@
 							<label class="control-label col-md-4" for="description">Enter Description Name:</label>
 							
 							<div class="col-md-8">
-								<sf:textarea path="description" id="description" rows="4" placeholder="write a description" class="form-control"/>
-								
+								<sf:textarea path="Description" id="description" rows="3" placeholder="write a description" class="form-control"/>
+								<sf:errors path="Description" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						
@@ -57,7 +72,7 @@
 							
 							<div class="col-md-8">
 								<sf:input type="number" path="untiprice" id="untiprice" placeholder="Unit Price In &#8377;" class="form-control"/>
-								
+								<sf:errors path="untiprice" cssClass="help-block" element="em"/>
 							</div>
 						</div>
 						
@@ -92,7 +107,7 @@
 							
 							<div class="col-md-offset-4 col-md-8">
 								<input type="submit" name="submit" id="submit" value="submit" class="btn btn-primary"/>
-								<!--  <em class="help-block">Please enter Brand Name</em>-->
+								<!--  <em class="help-block">Please enter Brand Name</em> -->
 							
 							<!--Hidden fields  -->	
 							<sf:hidden path="id"/>
