@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
-import org.hibernate.annotations.Nationalized;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -55,6 +56,17 @@ public class Product {
 	
 	private int views;
 	
+	@Transient
+	private MultipartFile file;
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	public Product()
 	{
 		this.code="PRD"+UUID.randomUUID().toString().substring(26).toUpperCase();
