@@ -30,7 +30,7 @@ public class Product {
 	@NotBlank(message= "Please enter the Brand name !")
 	private String brand;
 	
-//	@JsonIgnore
+
 	@NotBlank(message= "Please enter Description for the Product !")
 	private String Description;
 	
@@ -41,7 +41,7 @@ public class Product {
 	private int quantity;
 	
 	@Column(name="is_active")
-	@JsonIgnore
+	//@JsonIgnore
 	private boolean active;
 	
 	@Column(name="category_id")

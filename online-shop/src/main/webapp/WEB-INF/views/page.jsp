@@ -99,6 +99,9 @@ window.contextRoot = '${contextRoot}'
 		
 		<!-- Datatable Bootstrap Script -->
 		<script src="${js}/dataTables.bootstrap.js"></script>
+		
+		<!-- BootBox -->
+		<script src="${js}/bootbox.min.js"></script>
 				
 		<!-- My own coded jquery -->
 		<script src="${js}/myapp.js"></script>
