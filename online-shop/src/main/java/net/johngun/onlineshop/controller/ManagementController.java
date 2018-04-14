@@ -29,89 +29,122 @@ import net.johngun.onlineshop.validator.ProductValidator;
 @Controller
 @RequestMapping("/manage")
 public class ManagementController {
-	
+
 	@Autowired
 	private CategoryDAO categoryDAO;
-	
+
 	@Autowired
 	private ProductDAO productDAO;
-	
-	private static final Logger logger=LoggerFactory.getLogger(ManagementController.class);
-	
-	@RequestMapping(value="/products", method=RequestMethod.GET)
-	public ModelAndView showManageProduct(@RequestParam(name="operation", required=false) String operation){
-		
-		ModelAndView mv=new ModelAndView("page");
-		
-		mv.addObject("title","ManageProducts");
+
+	private static final Logger logger = LoggerFactory.getLogger(ManagementController.class);
+
+	@RequestMapping(value = "/products", method = RequestMethod.GET)
+	public ModelAndView showManageProduct(@RequestParam(name = "operation", required = false) String operation) {
+
+		ModelAndView mv = new ModelAndView("page");
+
+		mv.addObject("title", "ManageProducts");
 		mv.addObject("userClickManageProduct", true);
-		
-		Product nproduct=new Product();
-		
-		//set few of the fields
+
+		Product nproduct = new Product();
+
+		// set few of the fields
 		nproduct.setSupplierId(1);
 		nproduct.setActive(true);
-		
-		mv.addObject("product",nproduct);
-		
-		if(operation!=null){
-			
-			if(operation.equals("product")){
-				mv.addObject("message","Product Submitted Successfullly!");
+
+		mv.addObject("product", nproduct);
+
+		if (operation != null) {
+
+			if (operation.equals("product")) {
+				mv.addObject("message", "Product Submitted Successfullly!");
 			}
 		}
-		
+
 		return mv;
-		
 	}
-	
-	//Handling product submision into DB
-	@RequestMapping(value="/products", method=RequestMethod.POST)
-	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult br , Model model,
-			HttpServletRequest request)
+
+	// Handling product submision into DB
+	@RequestMapping(value = "/products", method = RequestMethod.POST)
+	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult br,
+			Model model, HttpServletRequest request) 
 	{
-		//calling product validate method explicitly
-		new ProductValidator().validate(mProduct, br);
-		
-		//Check for errors
-		if(br.hasErrors()){
-			
+		// handle validation for new product 
+		if(mProduct.getId()==0)
+		{
+			new ProductValidator().validate(mProduct, br);
+		}
+		else
+		{	if(!(mProduct.getFile().getOriginalFilename().equals("")))
+			new ProductValidator().validate(mProduct, br);
+		}
+
+		// Check for errors
+		if (br.hasErrors()) {
+
 			model.addAttribute("userClickManageProduct", true);
 			model.addAttribute("title", "ManageProducts");
 			model.addAttribute("message", "Product Submission Failed Jaffa ! ");
-			
+
 			return "page";
 		}
-		
+
 		logger.info(mProduct.toString());
 		
-		productDAO.add(mProduct);
-		
-		if(!mProduct.getFile().getOriginalFilename().equals("")){
-			FileUploadUtility.uploadFile(request,mProduct.getFile(),mProduct.getCode());
+		if(mProduct.getId()==0)
+		{
+			//create new product record if id is 0
+			productDAO.add(mProduct);
 		}
-		
+		else
+		{
+			//update product record if id is not 0
+			productDAO.update(mProduct);
+		}
+
+		if (!mProduct.getFile().getOriginalFilename().equals("")) {
+			FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getCode());
+		}
+
 		return "redirect:/manage/products?operation=product";
 	}
-	
-	@RequestMapping(value="/products/{id}/activation", method=RequestMethod.POST)
-	@ResponseBody
-	public String handleProductActivation(@PathVariable int id)
+
+	@RequestMapping(value = "/{id}/product", method = RequestMethod.GET)
+	public ModelAndView showManageProduct(@PathVariable int id) 
 	{
+
+		ModelAndView mv = new ModelAndView("page");
+
+		mv.addObject("title", "ManageProducts");
+		mv.addObject("userClickManageProduct", true);
+		
+		//getting product data from database
+		Product nproduct = productDAO.get(id);
+		
+		//setting the product data to the form
+		mv.addObject("product", nproduct);
+		return mv;
+
+	}
+
+	@RequestMapping(value = "/product/{id}/activation", method = RequestMethod.POST)
+	@ResponseBody
+	public String handleProductActivation(@PathVariable int id) {
+		// is going to fetch the product from the database
 		Product product = productDAO.get(id);
 		boolean isActive = product.isActive();
-		
+		// activating and deactivating based on the value of active field
 		product.setActive(!product.isActive());
+		// updating the product
 		productDAO.update(product);
-		
+
 		return (isActive) ? "You have deactivated the product for the ID :" + product.getId()
-							: "You have activated the product for the ID :" + product.getId();
+				: "You have activated the product for the ID :" + product.getId();
 	}
-	
-	//returning categories for all request mapping
+
+	// returning categories for all request mapping
 	@ModelAttribute("categories")
-	public List<Category> getCategories()
-	{
+	public List<Category> getCategories() {
 		return categoryDAO.list();
 	}
 }

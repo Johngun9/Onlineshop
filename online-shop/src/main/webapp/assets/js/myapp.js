@@ -221,7 +221,7 @@ $(function(){
 											
 											var str='';
 											
-											str +='<a href="${contextRoot}/manage/'+data+'/product" class="btn btn-warning">';
+											str +='<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning">';
 											
 											str +='<span class="glyphicon glyphicon-pencil"></span></a>';
 											
@@ -247,11 +247,16 @@ $(function(){
 										callback : function(confirmed) {
 											if(confirmed){
 												console.log(value);
-												bootbox.alert({
-													size: 'small',
-													title: 'Information',
-													message: 'You are going to perform operation on product ' + value
-												});					
+												
+												var activationUrl = window.contextRoot+'/manage/product/' + value + '/activation';
+												
+												$.post(activationUrl, function(data){
+													bootbox.alert({
+														size: 'small',
+														title: 'Information',
+														message: data
+													});		
+												});
 											}
 											else {
 												checkbox.prop('checked',!checked);					

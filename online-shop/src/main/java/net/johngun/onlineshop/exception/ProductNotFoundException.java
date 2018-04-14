@@ -10,7 +10,7 @@ public class ProductNotFoundException extends Exception implements Serializable 
 	private String message;
 	
 	public ProductNotFoundException(){
-		this("Product is not available!!");
+		this("Product is not available for now !!");
 	}
 	
 	public ProductNotFoundException(String messsage){
